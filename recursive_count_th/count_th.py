@@ -9,18 +9,12 @@ def count_th(word):
     if len(word) == 0:
         return 0
     
-    # [word[i:i+1] for i in range(0, len(word))]
-    for i in range(0, len(word)):
-        word[i:i+1]     
-
-        checked = len(word) - len(word)
-        
-        if word[checked] == 't':
-            if word[checked+1] == 'h':
-                count+=1
-        else:
-            checked +=1
-            # return count_th(word)
+    elif word[0] == 't':
+        if word[1] == 'h':
+            count+=1
+    else:
+        # newWord = 
+        return count_th(word.pop(0)) + count_th(word.pop(0))
 
     return count
 
@@ -34,7 +28,7 @@ def count_th(word):
 
 
 
-    
+
 # myWord = 'math'
 # for i in range(0, len(myWord)):
 #     myWord[i:i+1]
