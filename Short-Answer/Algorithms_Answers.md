@@ -27,3 +27,5 @@ def drop_egg(n, f_dropped):
         
 
 In this scenario where we don't know what floor the eggs will break, and we want to find out as quickly as possible, I have come up with a binary search method for this algorithm. 'n' story building will be an array of those stories. In calling the method, you pass in what building you are in (each building will have different stories) and what floor number you are on when you drop an egg. Binary search is the quickest because if you drop an egg on floor 5 and it breaks, you know that it will also break on level 6, 7, 8, 9, and 10. Thus, the level that the egg won't break will be lower than six. We check the next middle of the floors until we find what floor the egg doesn't break on and return that number. 
+
+This will be runtime of O(n log n) because each time it is running, it is cutting list in half instead of having to go through every single floor in the building.

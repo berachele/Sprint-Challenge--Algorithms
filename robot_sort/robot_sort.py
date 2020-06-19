@@ -109,11 +109,12 @@ class SortingRobot:
                 #if yes, move right
                 self.move_right()
                 #compare: > check then move right
+                print(f'holding: {self._item}')
                 self.compare_item()
-                print('comparing')
+                print(f'comparing {self._item} to {self._position}')
                 if self.compare_item() == 1: #checking if greater than
                     if self.can_move_right() == True:
-                        self.move_right()
+                        # self.move_right()
                         print('held item is greater, ')
                         return self.sort()
                 if self.compare_item == -1: #then its less than
@@ -121,7 +122,7 @@ class SortingRobot:
                     self.swap_item()
                     print('held item is less, swapping item')
                     if self.can_move_right() == True:
-                        self.move_right()
+                        # self.move_right()
                         print('moving right after swapping')
                         return self.sort()
            
@@ -136,6 +137,8 @@ class SortingRobot:
         #     self.set_light_on()
             #if yes, first compare
         self.compare_item()
+        print(f'comparing {self._item} to {self._position}')
+
         if self.compare_item() == 1: #is greater
             #if > swap then check and move left
             print('From Left: item is greater, swapping item')
