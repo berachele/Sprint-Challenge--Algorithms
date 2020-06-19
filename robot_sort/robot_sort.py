@@ -102,46 +102,44 @@ class SortingRobot:
         if self._position == 0 or self.compare_item == None:
             self.swap_item
             print(f'switching None at position {self._position}')
+            
             if self.can_move_right == True:
+                print('moving right')
+                #if yes, move right
                 self.move_right
-        #can move right?
-        elif self.can_move_right == True:
-            print('moving right')
-            #if yes, move right
-            self.move_right
-            #compare: > check then move right
-            self.compare_item
-            print('comparing')
-            if self.compare_item == 1: #checking if greater than
-                if self.can_move_right == True:
-                    self.move_right
-                    print('held item is greater, moving right')
-                    return self.sort()
-            if self.compare_item == -1: #then its less than
-                # < swap then check and move right
-                self.swap_item
-                print('held item is less, swapping item')
-                if self.can_move_right == True:
-                    self.move_right
-                    print('moving right after swapping')
-                    return self.sort()
-        #if no, can move left?
-        elif self.can_move_left == True:
-            #if yes, first compare
-            self.compare_item
-            if self.compare_item == 1: #is greater
-                #if > swap then check and move left
-                print('From Left: item is greater, swapping item')
-                self.swap_item
-                if self.can_move_left == True:
-                    print('moving left after swapping')
-                    self.move_left
-                    return self.sort()
-            if self.compare_item == -1: #is less than
-                print('From Left: item is less, moving left and sorting again')
-                if self.can_move_left == True:
-                    self.move_left
-                    return self.sort()
+                #compare: > check then move right
+                self.compare_item
+                print('comparing')
+                if self.compare_item == 1: #checking if greater than
+                    if self.can_move_right == True:
+                        self.move_right
+                        print('held item is greater, moving right')
+                        return self.sort()
+                if self.compare_item == -1: #then its less than
+                    # < swap then check and move right
+                    self.swap_item
+                    print('held item is less, swapping item')
+                    if self.can_move_right == True:
+                        self.move_right
+                        print('moving right after swapping')
+                        return self.sort()
+            #if no, can move left?
+            elif self.can_move_right == False:
+                #if yes, first compare
+                self.compare_item
+                if self.compare_item == 1: #is greater
+                    #if > swap then check and move left
+                    print('From Left: item is greater, swapping item')
+                    self.swap_item
+                    if self.can_move_left == True:
+                        print('moving left after swapping')
+                        self.move_left
+                        return self.sort()
+                if self.compare_item == -1: #is less than
+                    print('From Left: item is less, moving left and sorting again')
+                    if self.can_move_left == True:
+                        self.move_left
+                        return self.sort()
 
 
 if __name__ == "__main__":
