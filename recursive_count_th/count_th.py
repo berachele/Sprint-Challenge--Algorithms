@@ -8,13 +8,13 @@ def count_th(word):
     count = 0
     if len(word) == 0:
         return 0
-    
     elif word[0] == 't':
         if word[1] == 'h':
             count+=1
+            # return count_th(word[1:])
     else:
-        # newWord = 
-        return count_th(word.pop(0)) + count_th(word.pop(0))
+        print(f'word[1:]: {word[1:]},')
+        return count_th(word[1:])
 
     return count
 
@@ -27,7 +27,8 @@ def count_th(word):
     # return count
 
 
-
+word = "THtHThth"
+print(count_th(word))
 
 # myWord = 'math'
 # for i in range(0, len(myWord)):
