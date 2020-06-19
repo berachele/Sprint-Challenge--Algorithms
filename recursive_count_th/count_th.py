@@ -6,5 +6,13 @@ Your function must utilize recursion. It cannot contain any loops.
 def count_th(word):
     
     # TBC
-    
-    pass
+    count = 0
+    if len(word) == 0:
+        print("NO WORD")
+        return 0
+    elif "th" in word:
+        print(f'IN ELIF --> count: {count}')
+        count = count+1
+        print(f'after count: {count}')
+        return count_th(word)
+    return count
