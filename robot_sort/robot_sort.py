@@ -97,14 +97,59 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        #first swap None with value at position 0
+            #if comparing and position item is None, swap
+        if self._position == 0 or self.compare_item == None:
+            self.swap_item
+            print(f'switching None at position {self._position}')
+            if self.can_move_right == True:
+                self.move_right
+        #can move right?
+        elif self.can_move_right == True:
+            print('moving right')
+            #if yes, move right
+            self.move_right
+            #compare: > check then move right
+            self.compare_item
+            print('comparing')
+            if self.compare_item == 1: #checking if greater than
+                if self.can_move_right == True:
+                    self.move_right
+                    print('held item is greater, moving right')
+                    return self.sort()
+            if self.compare_item == -1: #then its less than
+                # < swap then check and move right
+                self.swap_item
+                print('held item is less, swapping item')
+                if self.can_move_right == True:
+                    self.move_right
+                    print('moving right after swapping')
+                    return self.sort()
+        #if no, can move left?
+        elif self.can_move_left == True:
+            #if yes, first compare
+            self.compare_item
+            if self.compare_item == 1: #is greater
+                #if > swap then check and move left
+                print('From Left: item is greater, swapping item')
+                self.swap_item
+                if self.can_move_left == True:
+                    print('moving left after swapping')
+                    self.move_left
+                    return self.sort()
+            if self.compare_item == -1: #is less than
+                print('From Left: item is less, moving left and sorting again')
+                if self.can_move_left == True:
+                    self.move_left
+                    return self.sort()
 
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [5, 4, 3, 2, 1]
+    # l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
 
