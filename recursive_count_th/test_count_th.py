@@ -17,20 +17,20 @@ class Test(unittest.TestCase):
         count = count_th(self.word)
         self.assertEqual(1, count)
     
-    def test_count_th_multiple(self):
-        self.word = "abcthefthghith"
-        count = count_th(self.word)
-        self.assertEqual(3, count)
+    # def test_count_th_multiple(self):
+    #     self.word = "abcthefthghith"
+    #     count = count_th(self.word)
+    #     self.assertEqual(3, count)
 
     # def test_count_backwards(self):
     #     self.word = "thhtthht"
     #     count = count_th(self.word)
     #     self.assertEqual(2, count)
 
-    # def test_count_th_mixedcase(self):
-    #     self.word = "THtHThth"
-    #     count = count_th(self.word)
-    #     self.assertEqual(1, count)
+    def test_count_th_mixedcase(self):
+        self.word = "THtHThth"
+        count = count_th(self.word)
+        self.assertEqual(1, count)
 
     
 if __name__ == '__main__':
