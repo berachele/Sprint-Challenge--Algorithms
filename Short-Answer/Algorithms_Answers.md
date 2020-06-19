@@ -11,15 +11,19 @@ b) This is a nest loop (a while loop inside of a for loop) so it would be the ti
 c) O(n) would be this case even though it is a recursion method. Because even though you are adding 2 to each recursion, it is still only returning the amount of 'bunnies' that you give it, thus being O returning n times: O(n)
 
 ## Exercise II
-f = (input number, I am using 3)
-egg_broken = False
+n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-def drop_egg(n):
-    if n <= f:
-        egg_broken == True
-    else:
-        egg_broken == False
+def drop_egg(n, f_dropped):
+    lowest_f = n[0]
+    highest_f = n[-1]
+    while lowest_f <= highest_f:
+        f = (lowest_f + highes_f) /2
+        if f_dropped < n[f]:
+            highest_f = f -1
+        elif f > n[f]:
+            lowest_f +1
+        else:
+            return f
+        
 
-I give this algorithm in proposal to solve the broken egg crisis from those who dare to use any building to vandalize property and said building and the countless amount of eggs harmed in this encounter. I am assuming that the floor of which the egg is thrown off of is always going to break at a certain floor--thus, I have it defined outside of the function so it always remains the same. I then have egg_broken first set to False because when you first climb the building with your carton of eggs, I'm assuming that the vandalists were atleast decent enough to check the carton for broken eggs before buying. In the method or action of when someone drops an egg, n (story of the building) is determined. 'n' will always be the top of the building because the doors are locked and the boys do parkour (or found a ladder). If 'n' is equal to or lower than the set rule of floors, then the egg is safe! However, if the egg is dropped from any story higher than the set rule of floors, the egg is lost and cannot be put back together again. 
-
-This is O(1) because it doesn't matter how many eggs they have, the outcome will always be the same whether or not the story is less/equal or higher than the set floor rate. 
+In this scenario where we don't know what floor the eggs will break, and we want to find out as quickly as possible, I have come up with a binary search method for this algorithm. 'n' story building will be an array of those stories. In calling the method, you pass in what building you are in (each building will have different stories) and what floor number you are on when you drop an egg. Binary search is the quickest because if you drop an egg on floor 5 and it breaks, you know that it will also break on level 6, 7, 8, 9, and 10. Thus, the level that the egg won't break will be lower than six. We check the next middle of the floors until we find what floor the egg doesn't break on and return that number. 
