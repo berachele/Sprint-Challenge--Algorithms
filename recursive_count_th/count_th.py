@@ -9,16 +9,18 @@ def count_th(word):
     if len(word) == 0:
         return 0
     elif word[0] == 't':
-        print(f'letter {word[0]} is t, checking next letter: {word[1]}')
         if word[1] == 'h':
-            print('has H afterwards, adding to count')
+            # print('has H afterwards, adding to count')
             return count+1 + count_th(word[1:])
+        else: 
+            # print('hitting else else, recurse again')
+            return count_th(word[1:])
     else:
-        print(f'not "th" sequence, RECURSING AGAIN --> word[1:]: {word[1:]}')
+        # print(f'not "th" sequence, RECURSING AGAIN --> word[1:]: {word[1:]}')
         return count_th(word[1:])
 
-    print(f'count: {count}')
+    # print(f'count: {count}')
     return count
 
-word = "THtHThth"
-print(count_th(word))
+# word = "THtHThth"
+# print(count_th(word))
