@@ -120,7 +120,7 @@ class SortingRobot:
                 #         print('held item is greater, ')
                 #         # return self.sort()
                 #         self.move_right()
-                if self.compare_item == -1: #then its less than
+                if self.compare_item == 1: #then its less than
                     # < swap then check and move right
                     self.swap_item()
                     print('held item is less, swapping item')
@@ -128,23 +128,25 @@ class SortingRobot:
                     #     print('item swapped, sorting again')
                     #     # return self.sort()
             
-                else:
-                    print("CAN'T MOVE RIGHT, TURNING LIGHT OFF")
-                    self.set_light_off()
-                    # return self.sort()
+                
+            print("CAN'T MOVE RIGHT, TURNING LIGHT OFF")
+            self.set_light_off()
+            # return self.sort()
 
     #if no, can move left?
         while not self.light_is_on():
             while self.compare_item() is not None:
                 print('Light is: OFF')
                 #if yes, first compare
-                self.compare_item()
+                self.move_left()
                 print(f'comparing {self._item} to {self._position}')
 
-                if self.compare_item() == 1: #is greater
-                    #if > swap then check and move left
-                    print('From Left: item is greater, swapping item')
-                    self.swap_item()
+            self.swap_item()
+            self.set_light_on()
+                # if self.compare_item() == 1: #is greater
+                #     #if > swap then check and move left
+                #     print('From Left: item is greater, swapping item')
+                #     self.swap_item()
                     # if self.can_move_left() == True:
                     #     print('moving left after swapping')
                     #     self.move_left()
@@ -155,9 +157,9 @@ class SortingRobot:
                 #         self.move_left()
                         # return self.sort()
                 # else:
-                
-            self.swap_item()
-            self.set_light_on()
+            # self.swap_item()
+            if self.compare_item() is not None and self.can_move_right == False:
+                self.set_light_off()
                     # return self.sort()
 
 
