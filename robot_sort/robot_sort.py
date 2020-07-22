@@ -92,18 +92,65 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def pick_up(self):
+        self._item = self._list[self._position]
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        #memeory, light is on when going right
+        self.set_light_on()
+        while self.light_is_on() == True:   
+            print('Light is: ON')
+            #swapping number with None
+            self.swap_item()
+            print(f'Swapped None: {self._list}')
+            #Can move right?
+            while self.can_move_right() == True:
+                print('can move right, moving right')
+                #if yes, move right
+                self.move_right()
+                #compare: > then swap item
+                print(f'holding: {self._item}')
+                self.compare_item()
+                print(f'comparing {self._item} to {self._position}')
+                if self.compare_item() == 1: 
+                    #item is greater--swap
+                    self.swap_item()
+                    print('held item is greater, swapping item')
+            #can't move right anymore, turn off light to go through list in left direction
+            print("CAN'T MOVE RIGHT, TURNING LIGHT OFF")
+            self.set_light_off()
+
+            #if no, can move left?
+            while self.light_is_on() == False:
+                print('Light is: OFF')
+                #If it is not with None, moving left
+                while self.compare_item() != None:
+                    print('Not None--moving left')
+                    self.move_left()
+
+                #if it is None: Swap item and turn on light to go through again
+                print(f'Number is NONE--swapping item--turning light ON')
+                self.swap_item()
+                self.set_light_on()
+            #moving right before starting first loop again to move 'None' down the line
+            self.move_right()
+            print(f'End of both LOOPS. List: {self._list}')
+            print(f'Moved right, At position: {self._position}')
+            #break loop if can't move right anymore--list is completed
+            if self.compare_item() == None and self.can_move_right() == False:
+                print(f'Set light to OFF--not None and cant move right--> Postion: {self._position}')
+                break
+
 
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
+    # l = [5, 4, 3, 2, 1]
     l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
