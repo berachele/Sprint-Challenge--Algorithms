@@ -115,8 +115,8 @@ class SortingRobot:
                 print(f'holding: {self._item}')
                 # self.compare_item()
                 print(f'comparing {self._item} to {self._position}')
-                if self.compare_item == 1: #then its greater than
-                    #swap
+                if self.compare_item() == 1: 
+                    #item is greater than--swap
                     self.swap_item()
                     print('held item is greater, swapping item')
             #can't move right anymore, turn off light to go through list in left direction
@@ -137,12 +137,12 @@ class SortingRobot:
                 self.set_light_on()
             #moving right before starting first loop again to move 'None' down the line
             self.move_right()
-            print(f'End of both LOOPS. At position: {self._position}')
+            print(f'End of both LOOPS. List: {self._list}')
             print(f'Moved right, At position: {self._position}')
             #break loop if can't move right anymore--list is completed
-            if self.compare_item() is not None and self.can_move_right == False:
+            if self.compare_item() is not None and not self.can_move_right():
                 print(f'Set light to OFF--not None and cant move right--> Postion: {self._position}')
-                break
+                return self.set_light_off()
 
 
 
