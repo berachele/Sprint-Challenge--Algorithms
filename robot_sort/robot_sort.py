@@ -106,51 +106,42 @@ class SortingRobot:
             #swapping number with None
             self.swap_item()
             #Can move right?
-            while self.can_move_right() == True:
+            while self.can_move_right():
                 print('can move right, moving right')
                 #if yes, move right
                 self.move_right()
                 #compare: > check then move right
                 print(f'holding: {self._item}')
-                self.compare_item()
+                # self.compare_item()
                 print(f'comparing {self._item} to {self._position}')
-        
                 if self.compare_item == 1: #then its less than
                     # < swap then check and move right
                     self.swap_item()
-                    print('held item is less, swapping item')
-
-            
+                    print('held item is greater, swapping item')
             #can't move right anymore, turn off light to go through list in left direction
             print("CAN'T MOVE RIGHT, TURNING LIGHT OFF")
             self.set_light_off()
 
-        #if no, can move left?
-        while not self.light_is_on():
-            #If it is not with None, moving left
-            while self.compare_item() is not None:
+            #if no, can move left?
+            while not self.light_is_on():
                 print('Light is: OFF')
-                #if yes, first compare
-                print(f'comparing {self._item} to {self._position}')
+                #If it is not with None, moving left
+                while self.compare_item() is not None:
+                    print('Not None--moving left')
+                    self.move_left()
 
-                self.compare_item()
-                if self.compare_item() == 1:
-                    print(f'Held item is greater, switching')
-                    self.swap_item()
-                print('moving Left')
-                self.move_left()
-
-            #if it is None: Swap item and turn on light to go through again
-            print(f'Number is NONE--swapping item--turning light ON')
-            self.swap_item()
-            self.set_light_on()
-        
-        print(f'End of both LOOPS. At position: {self._position}')
-        self.move_right()
-        print(f'Moved right, At position: {self._position}')
-        if self.compare_item() is not None and self.can_move_right == False:
-            print(f'Set light to OFF--not None and cant move right--> Postion: {self._position}')
-            return self.set_light_off()
+                #if it is None: Swap item and turn on light to go through again
+                print(f'Number is NONE--swapping item--turning light ON')
+                self.swap_item()
+                self.set_light_on()
+            #moving right before starting first loop again to move 'None' down the line
+            self.move_right()
+            print(f'End of both LOOPS. At position: {self._position}')
+            print(f'Moved right, At position: {self._position}')
+            #break loop if can't move right anymore--means list is completed
+            if self.compare_item() is not None and self.can_move_right == False:
+                print(f'Set light to OFF--not None and cant move right--> Postion: {self._position}')
+                break
 
 
 
