@@ -105,17 +105,18 @@ class SortingRobot:
             print('Light is: ON')
             #swapping number with None
             self.swap_item()
+            print(f'Swapped None: {self._list}')
             #Can move right?
             while self.can_move_right():
                 print('can move right, moving right')
                 #if yes, move right
                 self.move_right()
-                #compare: > check then move right
+                #compare: > check then swap item
                 print(f'holding: {self._item}')
                 # self.compare_item()
                 print(f'comparing {self._item} to {self._position}')
-                if self.compare_item == 1: #then its less than
-                    # < swap then check and move right
+                if self.compare_item == 1: #then its greater than
+                    #swap
                     self.swap_item()
                     print('held item is greater, swapping item')
             #can't move right anymore, turn off light to go through list in left direction
@@ -138,7 +139,7 @@ class SortingRobot:
             self.move_right()
             print(f'End of both LOOPS. At position: {self._position}')
             print(f'Moved right, At position: {self._position}')
-            #break loop if can't move right anymore--means list is completed
+            #break loop if can't move right anymore--list is completed
             if self.compare_item() is not None and self.can_move_right == False:
                 print(f'Set light to OFF--not None and cant move right--> Postion: {self._position}')
                 break
