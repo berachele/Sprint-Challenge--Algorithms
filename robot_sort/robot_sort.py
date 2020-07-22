@@ -138,8 +138,11 @@ class SortingRobot:
             while self.compare_item() is not None:
                 print('Light is: OFF')
                 #if yes, first compare
+                self.compare_item()
+                if self.compare_item() == 1:
+                    self.swap_item()
                 self.move_left()
-                print(f'comparing {self._item} to {self._position}')
+                # print(f'comparing {self._item} to {self._position}')
 
             self.swap_item()
             self.set_light_on()
@@ -157,9 +160,11 @@ class SortingRobot:
                 #         self.move_left()
                         # return self.sort()
                 # else:
-            # self.swap_item()
-            if self.compare_item() is not None and self.can_move_right == False:
-                self.set_light_off()
+            # # self.swap_item()
+        self.move_right()
+        if self.compare_item() is not None and self.can_move_right == False:
+            return self.set_light_off()
+
                     # return self.sort()
 
 
